@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import { sortByDate } from "../../../lib/sortByDate";
+import MainLayout from "../../../layouts/MainLayout.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  const tags = [
+    ...new Set(posts.map((post: any) => post.data.tags).flat()),
+  ].filter((d: any) => !!d);
+
+  const tagsList = tags.map((t: any) => {
+    return {
+      params: { tags: t.toLowerCase() },
+      props: {
+        tag: t,
+        posts: sortByDate(
+          posts.filter((p) => {
+            return p.data.tags
+              ?.map((tag: any) => tag.toLowerCase())
+              .includes(t.toLowerCase());
+          })
+        ),
+      },
+    };
+  });
+
+  return tagsList;
+}
+
+const { posts, tag } = Astro.props as any;
+---
+
+<MainLayout title={tag}>
+  <main>
+    <ul>
+      {
+        posts.map((post: any) => {
+          return (
+            <li>
+              <a href={`/blog/${post.slug}`}>
+                <FormattedDate date={post.data.pubDate} />
+                <span class="ml-4">{post.data.title}</span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </main>
+</MainLayout>

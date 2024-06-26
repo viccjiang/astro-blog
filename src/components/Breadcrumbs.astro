@@ -1,0 +1,24 @@
+---
+const list = Astro.url.pathname.replace(/\/+$/, "").split("/").slice(1);
+---
+
+<nav>
+  <ul class="flex items-center gap-1">
+    <li class="after:content-['/'] after:mx-1">home</li>
+    {
+      list.map((breadcrumb, index) =>
+        index + 1 === list.length ? (
+          <li>
+            <span class="line-clamp-1" aria-current="page">
+              {breadcrumb}
+            </span>
+          </li>
+        ) : (
+          <li class="after:content-['/'] after:mx-1">
+            <a href={`/${breadcrumb}/page/1/`}>{breadcrumb}</a>
+          </li>
+        )
+      )
+    }
+  </ul>
+</nav>

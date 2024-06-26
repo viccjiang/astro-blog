@@ -1,0 +1,45 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import Tags from "./Tags.astro";
+const { post } = Astro.props;
+---
+
+<div
+  class="mb-4 p-4 items-center justify-center w-full rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl"
+>
+  <img
+    class="mx-auto block sm:w-4/12 w-full rounded-lg"
+    alt="art cover"
+    src={post.data.heroImage}
+  />
+  <div class="sm:w-8/12 pl-0 p-5">
+    <div class="space-y-2">
+      <div class="space-y-4">
+        <a
+          class="text-md font-semibold text-justify"
+          href={`/blog/${post.slug}/`}
+        >
+          <h4 class="text-cyan-900">{post.data.title}</h4>
+        </a>
+      </div>
+      <FormattedDate date={post.data.pubDate} />
+
+      <p>{post.data.description}</p>
+      <div class="flex items-center space-x-4 justify-between">
+        <div>
+          <Tags tags={post.data.tags} />
+        </div>
+        <div
+          class="bg-sky-500 shadow-lg shadow- shadow-sky-600 text-white cursor-pointer px-3 text-center justify-center items-center py-1 rounded-xl flex space-x-2 flex-row"
+        >
+          <a
+            class="text-white hover:text-neutral-50"
+            href={`/blog/${post.slug}/`}
+          >
+            more...
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

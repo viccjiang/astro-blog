@@ -1,0 +1,26 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import MainLayout from "../../layouts/MainLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../../lib/sortByDate";
+
+const blogPosts = sortByDate(await getCollection("blog"));
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main>
+    {
+      blogPosts.map((post) => (
+        <p>
+          <>
+            <FormattedDate date={post.data.pubDate} />
+            <a class="pl-4" href={`/blog/${post.slug}/`}>
+              {post.data.title}
+            </a>
+          </>
+        </p>
+      ))
+    }
+  </main>
+</MainLayout>
