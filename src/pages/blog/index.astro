@@ -15,7 +15,7 @@ const blogPosts = sortByDate(await getCollection("blog"));
         <p>
           <>
             <FormattedDate date={post.data.pubDate} />
-            <a class="pl-4" href={`/blog/${post.slug}/`}>
+            <a class="pl-4" href={`/astro-blog/blog/${post.slug}/`}>
               {post.data.title}
             </a>
           </>

@@ -39,7 +39,7 @@ const { prev, next, current } = url;
         {
           !!prev && (
             <a
-              href={prev}
+              href={`/astro-blog/blog/page/${currentPage - 1}/`}
               class="h-12 w-12 mr-1 flex justify-center items-center rounded-full"
             >
               <svg
@@ -63,7 +63,7 @@ const { prev, next, current } = url;
           [...Array(lastPage).keys()].map((e: number) => {
             return (
               <a
-                href={`/blog/page/${e + 1}/`}
+                href={`/astro-blog/blog/page/${e + 1}/`}
                 class={`h-12 w-12 flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full ${
                   currentPage === e + 1
                     ? "bg-teal-600 text-white"
@@ -78,7 +78,7 @@ const { prev, next, current } = url;
         {
           !!next && (
             <a
-              href={next}
+              href={`/astro-blog/blog/page/${currentPage + 1}/`}
               class="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer"
             >
               <svg

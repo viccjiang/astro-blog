@@ -48,7 +48,7 @@ import MainLayout from "../layouts/MainLayout.astro";
                     day: "numeric",
                   })}
 								</time>
-								<a href="/blog/${slug}/">${title}</a>
+								<a href="/astro-blog/blog/${slug}/">${title}</a>
 							</li>`;
       })
       .join("");
@@ -58,7 +58,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     if (search?.length === 0) return;
     if (!SEARCH_DATA) {
       try {
-        const res = await fetch("/search.json");
+        const res = await fetch("/astro-blog/search.json");
 
         if (!res.ok) {
           throw new Error("Something went wrong…please try again");
