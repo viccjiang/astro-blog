@@ -2,7 +2,7 @@
 title: "Second post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 15 2022"
-heroImage: "/astro-blog/public/blog-placeholder-4.jpg"
+heroImage: "/astro-blog/blog-placeholder-4.jpg"
 tags:
   - Astro
   - Tailwind
