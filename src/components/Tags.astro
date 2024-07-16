@@ -6,7 +6,7 @@ const { tags } = Astro.props;
   (tags || []).map((tag: any) => {
     return (
       <a
-        href={`/blog/tags/${tag.toLowerCase()}`}
+        href={`/astro-blog/blog/tags/${tag.toLowerCase()}`}
         class="mr-4 inline-block relative py-1 text-xs"
       >
         <div class="absolute inset-0 text-neutral-200 flex">

@@ -40,7 +40,7 @@ const { posts, tag } = Astro.props as any;
         posts.map((post: any) => {
           return (
             <li>
-              <a href={`/blog/${post.slug}`}>
+              <a href={`/astro-blog/blog/${post.slug}`}>
                 <FormattedDate date={post.data.pubDate} />
                 <span class="ml-4">{post.data.title}</span>
               </a>
